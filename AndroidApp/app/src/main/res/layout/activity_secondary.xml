@@ -12,10 +12,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Secondary Activity"
+        android:text="CÔ GIÁO DẠY CHÍNH TẢ"
         android:textSize="24sp"
         android:textStyle="bold"
         android:padding="16dp"
         android:textColor="#D3D3D3"
         android:background="#8B4513"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="30dp"
+        android:text="Đoạn văn của học sinh:"
+        android:layout_gravity="left"
+        android:textColor="#8B4513"
+        android:textStyle="bold"
+        android:textSize="25sp">
+    </TextView>
+
+    <EditText
+        android:id="@+id/TextNeedToChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textSize="25sp">
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_button"
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/Change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã sửa lại"
+            android:background="@android:color/transparent"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_button"
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/Restore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="Khôi phục"
+            android:textSize="25sp" />
+    </LinearLayout>
 </LinearLayout>
