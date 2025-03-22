@@ -2,12 +2,14 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -55,5 +57,16 @@ public class MainActivity extends AppCompatActivity {
         student_clear.setOnClickListener(
                 v -> studentClearText()
         );
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 99 && resultCode == 33) {
+            Bundle result_bundle = data.getBundleExtra("teacher_data");
+            String result_teacher_str = result_bundle.getString("teacher_text");
+            Log.d("result", result_teacher_str);
+
+            teacher_text.setText(result_teacher_str);
+        }
     }
 }

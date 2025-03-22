@@ -16,6 +16,19 @@ public class SecondaryActivity extends AppCompatActivity {
     private EditText student;
     private String student_text;
     private Button update_change, restore_student_text;
+
+    protected void updateStudentChange() {
+        Bundle bundle = new Bundle();
+        bundle.putString("teacher_text", student.getText().toString());
+        intent.putExtra("teacher_data",bundle);
+        setResult(33, intent);
+        finish();
+    }
+
+    protected void restoreStudentText() {
+        student.setText(student_text);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,5 +47,13 @@ public class SecondaryActivity extends AppCompatActivity {
 
         update_change = findViewById(R.id.Change);
         restore_student_text = findViewById(R.id.Restore);
+
+        update_change.setOnClickListener(
+                v -> updateStudentChange()
+        );
+
+        restore_student_text.setOnClickListener(
+                v -> restoreStudentText()
+        );
     }
 }
