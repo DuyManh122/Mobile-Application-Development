@@ -12,7 +12,127 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Main Activity"
+        android:text="THÔNG TIN SINH VIÊN"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:textColor="#D3D3D3"
+        android:background="#8B4513"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Họ và tên:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#8A4B3F"
+            android:layout_gravity="center_vertical">
+        </TextView>
+
+
+        <EditText
+            android:id="@+id/HoVaTen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tên"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="MSSV:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#8A4B3F"
+            android:layout_gravity="center_vertical">
+        </TextView>
+
+
+        <EditText
+            android:id="@+id/MSSV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập mã số sinh viên"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Lớp:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#8A4B3F"
+            android:layout_gravity="center_vertical">
+        </TextView>
+
+
+        <EditText
+            android:id="@+id/Lop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập lớp"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="SĐT:"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#8A4B3F"
+            android:layout_gravity="center_vertical">
+        </TextView>
+
+
+        <EditText
+            android:id="@+id/SDT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập số điện thoại"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical">
+        </EditText>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="SINH VIÊN NĂM"
         android:textSize="24sp"
         android:textStyle="bold"
         android:padding="16dp"
