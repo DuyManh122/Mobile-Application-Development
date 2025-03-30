@@ -13,18 +13,17 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="THÔNG TIN SINH VIÊN"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:padding="16dp"
+        android:padding="10dp"
         android:textColor="#D3D3D3"
         android:background="#8B4513"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_marginTop="30dp">
+        android:paddingHorizontal="10dp">
 
         <TextView
             android:layout_width="100dp"
@@ -49,9 +48,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingHorizontal="10dp">
 
         <TextView
             android:layout_width="100dp"
@@ -76,9 +75,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingHorizontal="10dp">
 
         <TextView
             android:layout_width="100dp"
@@ -103,9 +102,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:paddingHorizontal="10dp">
 
         <TextView
             android:layout_width="100dp"
@@ -133,10 +132,160 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="SINH VIÊN NĂM"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:padding="16dp"
+        android:padding="10dp"
         android:textColor="#D3D3D3"
         android:background="#8B4513"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <CheckBox
+            android:id="@+id/checkBoxNam1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Năm 1" />
+
+        <CheckBox
+            android:id="@+id/checkBoxNam2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Năm 2" />
+
+        <CheckBox
+            android:id="@+id/checkBoxNam3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Năm 3" />
+
+        <CheckBox
+            android:id="@+id/checkBoxNam4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Năm 4" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="CHUYÊN NGÀNH"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textColor="#D3D3D3"
+        android:background="#8B4513"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <CheckBox
+            android:id="@+id/checkBoxDT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điện tử" />
+
+
+        <CheckBox
+            android:id="@+id/checkBoxVT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Viễn thông" />
+
+        <CheckBox
+            android:id="@+id/checkBoxMT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Máy tính - Hệ thống nhúng" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="KẾ HOẠCH PHÁT TRIỂN BẢN THÂN"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textColor="#D3D3D3"
+        android:background="#8B4513"/>
+
+    <EditText
+        android:id="@+id/EditTextPTBT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp">
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_background"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/ButtonCall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Call"
+                android:textSize="25sp"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_background"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/ButtonSMS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="SMS"
+                android:textSize="25sp"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_background"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/ButtonTruyen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Truyền"
+                android:textSize="25sp"
+                android:background="@android:color/transparent"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
