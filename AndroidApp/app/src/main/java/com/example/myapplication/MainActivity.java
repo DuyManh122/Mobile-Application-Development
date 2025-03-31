@@ -1,7 +1,11 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -19,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     CheckBox checkBoxDT,  checkBoxVT, checkBoxMT, checkedSpecializationBox;
     EditText HoVaTen, SDT, Lop, MSSV, PTBT;
     StudentInformation studentInformation = new StudentInformation();
-    Button buttonTruyen;
+    Button buttonTruyen, buttonCall, buttonSMS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         MSSV       = findViewById(R.id.MSSV);
         PTBT       = findViewById(R.id.EditTextPTBT);
         buttonTruyen = findViewById(R.id.ButtonTruyen);
+        buttonCall   = findViewById(R.id.ButtonCall);
+        buttonSMS    = findViewById(R.id.ButtonSMS);
 
         checkBoxNam1.setOnClickListener(v -> CheckYearOfTheStudent(checkBoxNam1));
         checkBoxNam2.setOnClickListener(v -> CheckYearOfTheStudent(checkBoxNam2));
@@ -53,19 +60,38 @@ public class MainActivity extends AppCompatActivity {
         checkBoxDT.setOnClickListener(v -> CheckSpecialization(checkBoxDT));
         checkBoxVT.setOnClickListener(v -> CheckSpecialization(checkBoxVT));
         checkBoxMT.setOnClickListener(v -> CheckSpecialization(checkBoxMT));
-
+        buttonCall.setOnClickListener(v -> callStudent());
+        buttonSMS.setOnClickListener(v -> sentSMS());
         buttonTruyen.setOnClickListener(v -> sentStudentInformation());
+    }
+    private void callStudent() {
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+ SDT.getText().toString()));
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new
+                    String[]{android.Manifest.permission.CALL_PHONE},11);
+            return;
+        }
+        startActivity(intent);
+    }
+
+    private void sentSMS() {
+        try {
+            getStudentInformation();
+            Intent smsIntent=new Intent(Intent.ACTION_SENDTO,Uri.parse("smsto:"+ SDT.getText().toString()));
+            //Sent message
+            String message = studentInformation.toString();
+            smsIntent.putExtra("sms_body", message);
+            smsIntent.putExtra(Intent.EXTRA_TEXT, message); // Alternative for some apps
+            startActivity(smsIntent);
+            
+        }   catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void sentStudentInformation() {
         try {
-            studentInformation.setSdt(SDT.getText().toString());
-            studentInformation.setName(HoVaTen.getText().toString());
-            studentInformation.setLop(Lop.getText().toString());
-            studentInformation.setMssv(MSSV.getText().toString());
-            studentInformation.setChuyenNganh(checkedSpecializationBox.getText().toString());
-            studentInformation.setNamHoc(checkedYearBox.getText().toString());
-            studentInformation.setNguyenVong(PTBT.getText().toString());
+            getStudentInformation();
             String text = studentInformation.toString();
             Bundle bundle = new Bundle();
             bundle.putString("student_text", text);
@@ -85,6 +111,16 @@ public class MainActivity extends AppCompatActivity {
         checkBoxNam4.setChecked(false);
         checkedYearBox = checkedBox;
         checkedBox.setChecked(true);
+    }
+
+    private void getStudentInformation() {
+        studentInformation.setSdt(SDT.getText().toString());
+        studentInformation.setName(HoVaTen.getText().toString());
+        studentInformation.setLop(Lop.getText().toString());
+        studentInformation.setMssv(MSSV.getText().toString());
+        studentInformation.setChuyenNganh(checkedSpecializationBox.getText().toString());
+        studentInformation.setNamHoc(checkedYearBox.getText().toString());
+        studentInformation.setNguyenVong(PTBT.getText().toString());
     }
 
     private void CheckSpecialization(CheckBox checkedBox) {
