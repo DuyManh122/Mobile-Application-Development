@@ -1,8 +1,12 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +20,7 @@ public class SecondaryActivity extends AppCompatActivity {
     private TextView student;
     private String studentText;
     private Button backButton;
+    private ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +32,24 @@ public class SecondaryActivity extends AppCompatActivity {
             return insets;
         });
 
+        imageView = findViewById(R.id.imageView);
+        student = findViewById(R.id.TextNeedToChange);
+        backButton = findViewById(R.id.Back);
+
         intent = getIntent();
         Bundle bundle = intent.getBundleExtra("student_data");
         studentText = bundle.getString("student_text");
-        student = findViewById(R.id.TextNeedToChange);
         student.setText(studentText);
 
-        backButton = findViewById(R.id.Back);
+        byte[] byteArray = bundle.getByteArray("picture_bytes");
+        Bitmap personalImage = null;
+        if (byteArray != null) {
+            personalImage = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        } else {
+            Log.e("Error", "Null bitmap");
+        }
+
+        imageView.setImageBitmap(personalImage);
         backButton.setOnClickListener(v -> {
                 finish();
         });

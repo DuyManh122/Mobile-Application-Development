@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+
+import android.graphics.Bitmap;
+
 public class StudentInformation {
     private String name;
     private String mssv;
@@ -9,11 +12,13 @@ public class StudentInformation {
     private String chuyenNganh;
     private String nguyenVong;
 
+    private Bitmap personalImage;
+
     public StudentInformation() {
     }
 
     public StudentInformation(String name, String mssv, String lop,
-                              String sdt, String namHoc, String chuyenNganh, String nguyenVong) {
+                              String sdt, String namHoc, String chuyenNganh, String nguyenVong, Bitmap personalImage) {
         this.name = name;
         this.mssv = mssv;
         this.lop = lop;
@@ -21,8 +26,16 @@ public class StudentInformation {
         this.namHoc = namHoc;
         this.chuyenNganh = chuyenNganh;
         this.nguyenVong = nguyenVong;
+        this.personalImage = personalImage;
     }
 
+    public Bitmap getPersonalImage() {
+        return  personalImage;
+    }
+
+    public void setPersonalImage(Bitmap personalImage) {
+        this.personalImage = personalImage;
+    }
     public String getName() {
         return name;
     }
