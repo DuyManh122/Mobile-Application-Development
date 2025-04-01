@@ -3,14 +3,15 @@ Weekly Reports for Mobile Application Development University Course.
 
 This repository for small group projects from the **Mobile Application Development** course at the **University of Science - HCMUS**. We need to develop a new Android application each week based on the concepts we learn during that time. It serves as a collection of our weekly Android applications, showcasing our knowledge throughout the course.
 
-## Student name
+## Group 5 Members
 
 | Name |Student ID         | Github account                        |
 |------|-------------------|---------------------------------------|
 | Nguyễn Đặng Duy Mạnh    |   21200312   | [DuyManh122](https://github.com/DuyManh122) |
+| Mai Thị Cẩm Ly          |   21200374   | [CamLy2003](https://github.com/CamLy2003)   |
 
 
-## Lab1 Projects
+## Week3 Projects
 ***Description:** Collect Student Information Android App using Intent and Bundle*
 
 ## Demo

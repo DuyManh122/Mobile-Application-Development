@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-        private void capturePicture() {
+    private void capturePicture() {
         Intent pic_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
 
