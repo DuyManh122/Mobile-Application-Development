@@ -13,6 +13,9 @@ This repository for small group projects from the **Mobile Application Developme
 ## Lab1 Projects
 ***Description:** Collect Student Information Android App using Intent and Bundle*
 
+## Demo
+https://youtu.be/jf_P6ytr8z4
+
 ## MainActivity
 
 ![image](https://github.com/user-attachments/assets/09a2cc8f-8c58-4717-b43b-c86b04f9e857)
