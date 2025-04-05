@@ -18,5 +18,5 @@ This repository for small group projects from the **Mobile Application Developme
 |------|-------------------------------------|------|
 | 2    | Solving quadratic equations         | [Week2](https://github.com/CamLy2003/BTVN-Android-Week2) |
 | 3    | Text Corrector                      | [Week3](https://github.com/DuyManh122/Mobile-Application-Development/tree/Week2) |
-
+| 4    | Collecting Student Information      | [Week4](https://github.com/DuyManh122/Mobile-Application-Development/tree/Week3) |
 
