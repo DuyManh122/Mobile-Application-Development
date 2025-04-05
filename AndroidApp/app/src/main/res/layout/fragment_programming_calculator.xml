@@ -9,19 +9,10 @@
     android:background="#000000"
     tools:context=".SecondaryActivity">
 
-    <TextView
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="start|center_vertical"
-        android:text="Programer"
-        android:textColor="#FFFFFF"
-        android:textSize="36sp" />
 
     <TextView
         android:layout_marginHorizontal ="30dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/displayResult"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -210,6 +201,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="4dp"
             android:backgroundTint="#FF5722"
             android:text="AND" />
 
@@ -218,6 +210,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="4dp"
             android:backgroundTint="#FF5722"
             android:text="OR" />
 
@@ -226,12 +219,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="4dp"
+
             android:backgroundTint="#FF5722"
             android:text="XOR" />
 
         <Button
             android:id="@+id/btnNot"
             android:layout_width="0dp"
+            android:layout_margin="4dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#FF5722"
@@ -261,22 +257,22 @@
             android:text="&gt;&gt;"
             android:backgroundTint="#FF5722" />
         <Button
-            android:id="@+id/buttonClearAll"
+            android:id="@+id/buttonClearUnit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="4dp"
             android:text="CE"
             android:backgroundTint="#FF5722" />
-
         <Button
-            android:id="@+id/buttonClearUnit"
+            android:id="@+id/buttonClear"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="4dp"
             android:text="C"
-            android:backgroundTint="#FF5722"/>
+            android:backgroundTint="#FF5722" />
+
     </LinearLayout>
 
 
@@ -318,7 +314,6 @@
             android:text="9"
             android:textSize="15sp"
             android:backgroundTint="#616161" />
-
         <Button
             android:id="@+id/buttonDivide"
             android:layout_width="0dp"
@@ -328,6 +323,7 @@
             android:backgroundTint="#FFC107"
             android:text="÷"
             android:textSize="15sp" />
+
 
     </LinearLayout>
 
@@ -365,6 +361,7 @@
             android:text="6"
             android:textSize="15sp"
             android:backgroundTint="#616161" />
+
         <Button
             android:id="@+id/buttonMultiply"
             android:layout_width="0dp"
@@ -374,6 +371,8 @@
             android:text="*"
             android:textSize="15sp"
             android:backgroundTint="#FFC107" />
+
+
 
     </LinearLayout>
 
@@ -413,6 +412,7 @@
             android:text="3"
             android:textSize="15sp"
             android:backgroundTint="#616161" />
+
         <Button
             android:id="@+id/buttonSubtract"
             android:layout_width="0dp"
@@ -422,6 +422,8 @@
             android:text="-"
             android:textSize="15sp"
             android:backgroundTint="#FFC107" />
+
+
 
     </LinearLayout>
 
@@ -453,7 +455,6 @@
             android:textSize="15sp"
             android:backgroundTint="#616161" />
 
-
         <Button
             android:id="@+id/buttonEquals"
             android:layout_width="0dp"
@@ -463,6 +464,7 @@
             android:text="="
             android:textSize="15sp"
             android:backgroundTint="#4CAF50" />
+
         <Button
             android:id="@+id/buttonAdd"
             android:layout_width="0dp"
@@ -472,6 +474,5 @@
             android:text="+"
             android:textSize="15sp"
             android:backgroundTint="#FFC107" />
-        
     </LinearLayout>
 </LinearLayout>
