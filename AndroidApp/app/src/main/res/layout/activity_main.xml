@@ -10,13 +10,80 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
-        android:text="Main Activity"
+        android:text="Sign in"
         android:textSize="24sp"
         android:textStyle="bold"
         android:padding="16dp"
         android:textColor="#D3D3D3"
         android:background="#8B4513"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:textColor="#8B4513"
+            android:textStyle="bold"
+            android:textSize="50sp"/>
+        <EditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your email"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/Button_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#8B4513"
+            android:text="Login"
+            android:textSize="22sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/checkbox_remember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ghi nhớ mật khẩu" />
+
+
+            <Button
+                android:id="@+id/Register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#8B4513"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"
+                android:text="Create Account" />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </LinearLayout>
