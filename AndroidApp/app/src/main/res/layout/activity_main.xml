@@ -12,11 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Main Activity"
+        android:text="Custom ListView Example"
         android:textSize="24sp"
         android:textStyle="bold"
         android:padding="16dp"
         android:textColor="#D3D3D3"
         android:background="#8B4513"/>
 
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
