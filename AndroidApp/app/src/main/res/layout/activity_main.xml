@@ -5,18 +5,40 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D2B48C"
+    android:background="@drawable/main_activity_bg"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Main Activity"
-        android:textSize="24sp"
+        android:text="Welcome"
+        android:textSize="48sp"
         android:textStyle="bold"
-        android:padding="16dp"
-        android:textColor="#D3D3D3"
-        android:background="#8B4513"/>
+        android:textColor="#2C3E50"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_marginTop="60dp"
+        android:layout_gravity="center_horizontal" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ML FLower Shop"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:textColor="#2C3E50"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/loginPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click here to log in"
+        android:textSize="18sp"
+        android:textColor="#7F8C8D"
+        android:textStyle="bold"
+        android:fontFamily="@font/playfairdisplay_italic"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
