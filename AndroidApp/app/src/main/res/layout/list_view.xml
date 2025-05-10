@@ -5,7 +5,7 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageListAvatarSV"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="10dp"
@@ -17,18 +17,18 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewName"
+            android:id="@+id/textListName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Android Cupcake"
+            android:text="Name"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textViewVersion"
+            android:id="@+id/textListStudentID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Version 1.5"
+            android:text="Student ID"
             android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>

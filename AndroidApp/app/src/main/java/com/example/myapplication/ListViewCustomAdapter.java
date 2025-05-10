@@ -9,22 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 
-public class ListViewCustomAdapterPractice1 extends ArrayAdapter<ListViewContentPractice1> {
-    public ListViewCustomAdapterPractice1(Context context, List<ListViewContentPractice1> versions) {
+public class ListViewCustomAdapter extends ArrayAdapter<ListViewContent> {
+    public ListViewCustomAdapter(Context context, List<ListViewContent> versions) {
         super(context, 0, versions);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ListViewContentPractice1 version = getItem(position);
+        ListViewContent version = getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_view, parent, false);
         }
 
-        ImageView imageView = convertView.findViewById(R.id.imageView);
-        TextView nameView = convertView.findViewById(R.id.textViewName);
-        TextView versionView = convertView.findViewById(R.id.textViewVersion);
+        ImageView imageView = convertView.findViewById(R.id.imageListAvatarSV);
+        TextView nameView = convertView.findViewById(R.id.textListName);
+        TextView versionView = convertView.findViewById(R.id.textListStudentID);
 
         imageView.setImageResource(version.getImage());
         nameView.setText(version.getName());
