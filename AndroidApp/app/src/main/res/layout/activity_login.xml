@@ -62,7 +62,7 @@
         android:layout_height="55dp"
         android:text="Login"
         android:textStyle="italic"
-        android:backgroundTint="@color/material_dynamic_primary60"
+        android:backgroundTint="@color/blue"
         app:layout_constraintBottom_toTopOf="@+id/txt_L_question"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
