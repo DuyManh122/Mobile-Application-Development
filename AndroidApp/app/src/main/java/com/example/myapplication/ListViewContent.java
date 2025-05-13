@@ -1,17 +1,19 @@
 package com.example.myapplication;
 
-public class ListViewContent {
-    int image;
-    String name;
-    String version;
+import android.graphics.Bitmap;
 
-    public ListViewContent(int image, String name, String version) {
+public class ListViewContent {
+    String mssv;
+    String name;
+    Bitmap image;
+
+    public ListViewContent(String mssv, String name, Bitmap image) {
         this.image = image;
         this.name = name;
-        this.version = version;
+        this.mssv = mssv;
     }
 
-    public int getImage() {
+    public Bitmap getImage() {
         return image;
     }
 
@@ -19,7 +21,7 @@ public class ListViewContent {
         return name;
     }
 
-    public String getVersion() {
-        return version;
+    public String getMssv() {
+        return mssv;
     }
 }

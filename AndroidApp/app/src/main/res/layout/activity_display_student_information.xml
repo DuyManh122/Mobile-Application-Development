@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_present_student_information"
+    android:id="@+id/activity_display_student_information"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D2B48C"
-    tools:context=".PresentStudentInformation">
+    tools:context=".DisplayStudentInformation">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="THÔNG TIN SINH VIÊN"
+        android:text="THÔNG TIN THU THẬP"
         android:textSize="24sp"
         android:textStyle="bold"
         android:padding="16dp"

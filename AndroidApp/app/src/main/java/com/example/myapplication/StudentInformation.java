@@ -3,7 +3,7 @@ package com.example.myapplication;
 
 import android.graphics.Bitmap;
 
-public class StudentInformation {
+public class StudentInformation  {
     private String name;
     private String mssv;
     private String lop;
@@ -18,7 +18,7 @@ public class StudentInformation {
     }
 
     public StudentInformation(String name, String mssv, String lop,
-                              String sdt, String namHoc, String chuyenNganh, String nguyenVong, Bitmap personalImage) {
+                              String sdt, String namHoc, String chuyenNganh, String nguyenVong, Bitmap personalImage)  {
         this.name = name;
         this.mssv = mssv;
         this.lop = lop;

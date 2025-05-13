@@ -13,6 +13,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#8B4513">
+        <ImageButton
+            android:id="@+id/buttonClearData"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/baseline_clear_24"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="#8B4513"
+            android:contentDescription="Clear text" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
