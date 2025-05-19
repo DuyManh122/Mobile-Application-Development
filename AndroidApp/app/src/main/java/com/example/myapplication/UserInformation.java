@@ -5,7 +5,7 @@ public class UserInformation {
     private  String date_of_birth;
     private  String address;
     private  String phone_number;
-    private  Gender sex;
+    private  String sex;
 
     public String getAddress() {
         return address;
@@ -23,7 +23,7 @@ public class UserInformation {
         return phone_number;
     }
 
-    public Gender getSex() {
+    public String getSex() {
         return sex;
     }
 
@@ -43,7 +43,7 @@ public class UserInformation {
         this.phone_number = phone_number;
     }
 
-    public void setSex(Gender sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 }

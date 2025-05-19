@@ -5,7 +5,7 @@
     android:id="@+id/product_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/product_bg"
+    android:background="@drawable/Bg2"
     tools:context=".ProductActivity">
 
     <EditText
