@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class UserInformationActivity extends AppCompatActivity {
+    UserInformation userInfor;
+    UserInfoAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +24,13 @@ public class UserInformationActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        Button logoutButton = findViewById(R.id.ExitButton);
+        ImageView changeUserInfoButton = findViewById(R.id.account_change_user_info);
+
+        changeUserInfoButton.setOnClickListener(v -> changeUserInformation());
+        logoutButton.setOnClickListener(v -> Logout());
     }
+
+    void
 }

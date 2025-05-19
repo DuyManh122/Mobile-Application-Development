@@ -19,7 +19,6 @@ public class UserInfoAdapter extends RecyclerView.Adapter<UserInfoAdapter.ViewHo
     // Create new views (invoked by the layout manager)
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Inflate the custom layout for each item in the list
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.display_user_information_list, parent, false);
         return new ViewHolder(view);

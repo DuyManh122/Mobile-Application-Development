@@ -106,9 +106,10 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:id="@+id/ChangeUserInfoContainer"
-                        android:layout_gravity="center"> <!-- Nếu cần -->
+                        android:layout_gravity="center">
 
                         <ImageView
+                            android:id="@+id/account_change_user_info"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/account_information_modify"

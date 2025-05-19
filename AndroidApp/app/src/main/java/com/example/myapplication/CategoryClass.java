@@ -10,8 +10,6 @@ public class CategoryClass {
         this.categoryID = categoryID;
         this.categoryName = categoryName;
     }
-
-
     public CategoryClass() {}
 
     //Getters and Setters
