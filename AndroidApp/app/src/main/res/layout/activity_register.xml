@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_register"
     android:background="@drawable/register_bg"
     tools:context=".RegisterActivity">
 
@@ -75,19 +76,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_R_Password" />
 
+    <Spinner
+        android:id="@+id/sp_R_UserType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="28dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btn_R_Register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_R_ConfirmPassword" />
 
     <Button
         android:id="@+id/btn_R_Register"
         android:layout_width="133dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="27dp"
-        android:backgroundTint="@color/material_dynamic_primary60"
+        android:backgroundTint="@color/blue"
         android:text="Register"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/txt_R_GoToLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_R_ConfirmPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/sp_R_UserType" />
 
 
     <TextView

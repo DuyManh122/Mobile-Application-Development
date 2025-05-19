@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="120dp"
+    android:layout_height="150dp"
+    android:layout_marginEnd="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <FrameLayout
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/circle_transparent_background"
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/categoryIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:background="@android:color/transparent"
+                android:padding="4dp"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/categoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Roses"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:textColor="#444" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

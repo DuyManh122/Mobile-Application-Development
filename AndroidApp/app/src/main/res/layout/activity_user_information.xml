@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbarSize="3dp"
+    android:scrollbarStyle="outsideOverlay"
+    android:id = "@+id/activity_user_information"
+    android:scrollbars="vertical"
+    android:scrollingCache="true"
+    android:smoothScrollbar="true"
+    tools:context=".UserInformationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/fragment_account">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D3D3D3"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_pink_rose"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="Account"
+                            android:textColor="#FFFF"
+                            android:textSize="22sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <!-- User Avatar Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="#FFFF"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
+                            android:src="@drawable/ic_profile" />
+                        <TextView
+                            android:id="@+id/HelloUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="120dp"
+                            android:text="NGUYEN DANG DUY MANH"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/pink"
+                            android:layout_marginTop="150dp"
+                            android:textStyle="bold"
+                            android:text="Flower Shop User"
+                            android:textSize="15sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:background="@drawable/user_pink_border"
+                        android:orientation="vertical"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:id="@+id/ChangeUserInfoContainer"
+                        android:layout_gravity="center"> <!-- Nếu cần -->
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/account_information_modify"
+                            android:layout_marginEnd="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="User Setting"
+                            android:fontFamily="sans-serif-condensed"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <!-- User Details Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+                    android:layout_marginTop="25dp"
+                    android:background="#FFFF"
+                    android:orientation="vertical">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false" />
+                </LinearLayout>
+
+                <!-- Logout Button -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#FFFFFF"
+                    android:gravity="center_horizontal">
+                    <Button
+                        android:id="@+id/ExitButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableLeft="@drawable/account_logout_icon"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="Sign Out"
+                        android:textColor="#e92912"
+                        android:textSize="25sp" />
+                </LinearLayout>
+
+                <!-- Android Version Text -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center"
+                    android:text="Android version: 1.0.0"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
