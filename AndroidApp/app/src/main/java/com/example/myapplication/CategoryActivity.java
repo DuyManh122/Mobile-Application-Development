@@ -1,52 +1,145 @@
 package com.example.myapplication;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class CategoryActivity extends AppCompatActivity {
-    EditText editTextCategoryID, editTextCategoryName;
-    Button btnSubmit;
-    private DBHelper dbHelper;
+
+    private static final int IMAGE_PICK_CODE = 1001;
+
+    EditText editTextCategoryName;
+    Button btnSubmit, btnPickImage;
+    ImageView imagePreview;
+
+    private Bitmap selectedBitmap;
+
+    private FirebaseFirestore firestore;
+    private FirebaseStorage storage;
+    private StorageReference storageRef;
+    private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_category);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.category_activity), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-        dbHelper = new DBHelper(this);
-        dbHelper.openDB();
 
+        editTextCategoryName = findViewById(R.id.txt_c_categoryName);
         btnSubmit = findViewById(R.id.btn_c_submit);
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnPickImage = findViewById(R.id.btn_c_pick_image);
+        imagePreview = findViewById(R.id.img_c_preview);
 
-                if (editTextCategoryID.getText().toString().isEmpty() || editTextCategoryName.getText().toString().isEmpty()) {
-                    Toast.makeText(CategoryActivity.this, "Fields can't be blank", Toast.LENGTH_SHORT).show();
-                } else {
-                    CategoryClass categoryClass = new CategoryClass(editTextCategoryID.getText().toString(), editTextCategoryName.getText().toString());
-                    if (dbHelper.InsertCategory(categoryClass)) {
-                        Toast.makeText(getApplicationContext(), "New Category Insert", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_LONG).show();
-                    }
-                }
+        // Initialize Firebase
+        firestore = FirebaseFirestore.getInstance();
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference().child("category_icons");
+        auth = FirebaseAuth.getInstance();
 
-            }
+        // Ensure user is logged in
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser == null) {
+            Toast.makeText(this, "You must be logged in", Toast.LENGTH_SHORT).show();
+            finish(); // Close activity if not authenticated
+            return;
+        }
+
+        btnPickImage.setOnClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, IMAGE_PICK_CODE);
         });
 
+        btnSubmit.setOnClickListener(view -> {
+            String name = editTextCategoryName.getText().toString().trim();
+
+            if (name.isEmpty() || selectedBitmap == null) {
+                Toast.makeText(this, "Please enter name and select an image", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            uploadImageAndSaveCategory(name, selectedBitmap);
+        });
+
+        // OPTIONAL: Auto insert default categories
+         AddSomeDefaultCategories();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == IMAGE_PICK_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            Uri imageUri = data.getData();
+            try {
+                selectedBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                imagePreview.setImageBitmap(selectedBitmap); // Show preview
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Failed to load image", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void uploadImageAndSaveCategory(String name, Bitmap bitmap) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] imageData = baos.toByteArray();
+
+        String fileName = UUID.randomUUID().toString() + ".png";
+        StorageReference imageRef = storageRef.child(fileName);
+
+        UploadTask uploadTask = imageRef.putBytes(imageData);
+        uploadTask
+                .addOnSuccessListener(taskSnapshot -> imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                    String imageUrl = uri.toString();
+
+                    Map<String, Object> categoryData = new HashMap<>();
+                    categoryData.put("name", name);
+                    categoryData.put("iconUrl", imageUrl);
+
+                    firestore.collection("Categories").add(categoryData)
+                            .addOnSuccessListener(documentReference -> {
+                                Toast.makeText(this, "Category added successfully", Toast.LENGTH_SHORT).show();
+                                finish();
+                            })
+                            .addOnFailureListener(e -> Toast.makeText(this, "Failed to save category", Toast.LENGTH_SHORT).show());
+                }))
+                .addOnFailureListener(e -> Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show());
+    }
+
+    // Optional helper to add default categories
+    private void AddSomeDefaultCategories() {
+        addCategoryWithBitmap("Spring", R.drawable.ic_flower_vase_spring);
+        addCategoryWithBitmap("Summer", R.drawable.ic_flower_vase_summer);
+        addCategoryWithBitmap("Autumn", R.drawable.ic_flower_vase_autumn);
+        addCategoryWithBitmap("Winter", R.drawable.ic_flower_vase_winter);
+    }
+
+    private void addCategoryWithBitmap(String name, int drawableResId) {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), drawableResId);
+        uploadImageAndSaveCategory(name, bitmap);
     }
 }

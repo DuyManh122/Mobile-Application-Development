@@ -1,12 +1,24 @@
 package com.example.myapplication;
 
-public class UserInformation {
+import java.io.Serializable;
+
+public class UserInformation implements Serializable {
     private  String name;
     private  String date_of_birth;
     private  String address;
     private  String phone_number;
-    private  String sex;
+    private  Gender sex;
 
+    public UserInformation() {
+    }
+
+    public UserInformation(String name, String date_of_birth, Gender sex, String address, String phone_number) {
+        this.name = name;
+        this.date_of_birth = date_of_birth;
+        this.address = address;
+        this.phone_number = phone_number;
+        this.sex = sex;
+    }
     public String getAddress() {
         return address;
     }
@@ -23,7 +35,7 @@ public class UserInformation {
         return phone_number;
     }
 
-    public String getSex() {
+    public Gender getSex() {
         return sex;
     }
 
@@ -43,7 +55,15 @@ public class UserInformation {
         this.phone_number = phone_number;
     }
 
-    public void setSex(String sex) {
+    public void setSex(Gender sex) {
         this.sex = sex;
+    }
+
+    public String toString() {
+        return "UserInformation{" +
+                "name='" + name + '\'' +
+                ", date_of_birth='" + date_of_birth + '\'' +
+                ", address='" + address + '\'' +
+                ", phone_number='" + phone_number + '\'';
     }
 }

@@ -22,9 +22,6 @@ public class OrderClass {
     }
 
 
-    //Getters and Setters
-
-
     public String getProductId() {
         return productId;
     }

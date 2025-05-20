@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,15 +15,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.ArrayList;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.AuthResult;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class LoginActivity extends AppCompatActivity {
-    TextView textViewGoToTheRegister;
 
+    TextView textViewGoToTheRegister;
     EditText editTextUserId, editTextPassword;
     Button buttonLogin;
 
-    private DBHelper dbHelper;
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,46 +40,51 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        dbHelper = new DBHelper(this);
-        dbHelper.openDB();
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
 
         textViewGoToTheRegister = findViewById(R.id.txt_L_GoToRegister);
-
-        textViewGoToTheRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intentLogToReg = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intentLogToReg);
-
-            }
-        });
-
-
         editTextUserId = findViewById(R.id.txt_L_UserId);
         editTextPassword = findViewById(R.id.txt_L_Password);
         buttonLogin = findViewById(R.id.btn_L_Login);
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ArrayList<UserClass> userDetails = dbHelper.ValidLogin(editTextUserId.getText().toString(),
-                        editTextPassword.getText().toString());
-                if (userDetails.size()!=0){
-                    UserClass user = userDetails.get(0);
-                    String userType = user.getUserType();//Admin
-                    Toast.makeText(LoginActivity.this, "User found " + userType, Toast.LENGTH_LONG).show();
-                    if (userType.equals("Admin")){
-                        Intent intentRegister = new Intent(LoginActivity.this, AdminActivity.class);
-                        startActivity(intentRegister);
-                    } else {
-                        Intent intentReg = new Intent(LoginActivity.this, UserActivity.class);
-                        startActivity(intentReg);
-                    }
-                } else {
-                    Toast.makeText(getApplicationContext(), "Invalid User", Toast.LENGTH_LONG).show();
-                }
+        textViewGoToTheRegister.setOnClickListener(v -> {
+            Intent intentLogToReg = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intentLogToReg);
+        });
+
+        buttonLogin.setOnClickListener(view -> {
+            String email = editTextUserId.getText().toString().trim();
+            String password = editTextPassword.getText().toString().trim();
+
+            if (TextUtils.isEmpty(email)) {
+                editTextUserId.setError("Email is required.");
+                return;
             }
+
+            if (TextUtils.isEmpty(password)) {
+                editTextPassword.setError("Password is required.");
+                return;
+            }
+
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(LoginActivity.this, task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginActivity.this, "Authentication successful.", Toast.LENGTH_SHORT).show();
+
+                            if (email.equals("admin@gmail.com") && password.equals("123456")) {
+                                Intent intentAdmin = new Intent(LoginActivity.this, AdminActivity.class);
+                                startActivity(intentAdmin);
+                            } else {
+                                Intent intentUser = new Intent(LoginActivity.this, UserActivity.class);
+                                startActivity(intentUser);
+                            }
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Authentication failed: " + task.getException().getMessage(),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
         });
     }
 }

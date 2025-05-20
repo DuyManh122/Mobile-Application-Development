@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activity_view_order_info"
-    android:background="@drawable/Bg2"
+    android:background="@drawable/bg2"
     tools:context=".ViewOrderInfoActivity">
 
     <TextView

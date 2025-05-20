@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/Bg62"
+    android:background="@drawable/bg62"
     tools:context=".ViewProductActivity">
 
     <ListView
         android:id="@+id/lst_L_Products"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
