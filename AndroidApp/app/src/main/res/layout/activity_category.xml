@@ -31,35 +31,33 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Pick Image Button -->
     <Button
         android:id="@+id/btn_c_pick_image"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
+        android:layout_width="121dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/pink"
         android:text="Pick Image"
-        android:backgroundTint="@color/blue"
         android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/img_c_preview"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_c_submit"
         app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintWidth_percent="0.45"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_c_preview"
+        app:layout_constraintWidth_percent="0.45" />
 
-    <!-- Submit Button -->
     <Button
         android:id="@+id/btn_c_submit"
-        android:layout_width="0dp"
-        android:layout_height="49dp"
-        android:text="Submit"
-        android:backgroundTint="@color/blue"
-        android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/img_c_preview"
-        app:layout_constraintStart_toEndOf="@+id/btn_c_pick_image"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.45"
+        android:layout_width="128dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp" />
+        android:backgroundTint="@color/pink"
+        android:text="Submit"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_c_pick_image"
+        app:layout_constraintTop_toBottomOf="@id/img_c_preview"
+        app:layout_constraintWidth_percent="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,14 +12,13 @@
         android:id="@+id/txt_A_Add_Category"
         android:layout_width="243dp"
         android:layout_height="54dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="356dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="1. Add a category"
         android:textColor="#5A3E36"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,13 +26,14 @@
         android:id="@+id/txt_A_Add_Product"
         android:layout_width="243dp"
         android:layout_height="54dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="72dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="2. Add a product"
         android:textColor="#5A3E36"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/txt_A_Add_Category"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/txt_A_Add_Category"
         app:layout_constraintTop_toTopOf="@id/txt_A_Add_Category" />
 
@@ -41,13 +41,15 @@
         android:id="@+id/txt_A_View_Orders"
         android:layout_width="243dp"
         android:layout_height="54dp"
+        android:layout_marginTop="84dp"
         android:fontFamily="sans-serif-condensed-light"
-        android:layout_marginTop="80dp"
         android:text="3. View Orders"
         android:textColor="#5A3E36"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/txt_A_Add_Product"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/txt_A_Add_Product"
         app:layout_constraintTop_toTopOf="@id/txt_A_Add_Product" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
