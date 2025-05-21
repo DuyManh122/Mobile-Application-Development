@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         Category category = categoryList.get(position);
         holder.icon.setImageBitmap(category.getIconBitmap());
         holder.name.setText(category.getName());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), ViewProductActivity.class);
+            intent.putExtra("categoryName", category.getName());
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override

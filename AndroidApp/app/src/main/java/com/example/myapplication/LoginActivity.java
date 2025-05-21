@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
         textViewGoToTheRegister = findViewById(R.id.txt_L_GoToRegister);

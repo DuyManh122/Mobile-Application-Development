@@ -53,7 +53,6 @@
                     android:src="@drawable/ic_cart" />
             </RelativeLayout>
 
-            <!-- Search Bar -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -73,9 +72,10 @@
                         android:src="@drawable/ic_search" />
 
                     <EditText
+                        android:id="@+id/txt_U_searchBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Search flowers by ID"
+                        android:hint="Search flowers"
                         android:background="@android:color/transparent"
                         android:textColorHint="#9E9E9E"
                         android:paddingStart="10dp" />
@@ -117,6 +117,24 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/banner_spring" />
         </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="All Flowers"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:fontFamily="@font/playfairdisplay_italic"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/flowerRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="24dp"
+            android:nestedScrollingEnabled="false" />
 
         <TextView
             android:layout_width="match_parent"

@@ -38,7 +38,7 @@ public class CategoryActivity extends AppCompatActivity {
     ImageView imagePreview;
 
     private Bitmap selectedBitmap;
-    private int resourceId = 0;
+    private String resourceId = "";
     private FirebaseFirestore firestore;
 
     private FirebaseAuth auth;
@@ -78,7 +78,7 @@ public class CategoryActivity extends AppCompatActivity {
             updateFirebaseData(name, resourceId);
         });
 
-//        AddSomeDefaultCategories();
+        AddSomeDefaultCategories();
     }
 
 
@@ -103,7 +103,7 @@ public class CategoryActivity extends AppCompatActivity {
                     selectedBitmap = BitmapFactory.decodeResource(getResources(), drawableIds[which], options);
 
                     imagePreview.setImageBitmap(selectedBitmap);
-                    resourceId =  drawableIds[which];
+                    resourceId = getResources().getResourceEntryName(drawableIds[which]);
                 })
                 .show();
     }
@@ -124,12 +124,12 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     private void AddSomeDefaultCategories() {
-        updateFirebaseData("Spring", R.drawable.ic_flower_vase_spring);
-        updateFirebaseData("Summer", R.drawable.ic_flower_vase_summer);
-        updateFirebaseData("Autumn", R.drawable.ic_flower_vase_autumn);
-        updateFirebaseData("Winter", R.drawable.ic_flower_vase_winter);
+        updateFirebaseData("Spring", "ic_flower_vase_spring");
+        updateFirebaseData("Summer", "ic_flower_vase_summer");
+        updateFirebaseData("Autumn", "ic_flower_vase_autumn");
+        updateFirebaseData("Winter", "ic_flower_vase_winter");
     }
-    private void updateFirebaseData(String document, int id) {
+    private void updateFirebaseData(String document, String id) {
             Map<String, Object> map = new HashMap<>();
             map.put("id", id);
 

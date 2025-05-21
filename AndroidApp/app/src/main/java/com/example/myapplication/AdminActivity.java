@@ -50,10 +50,9 @@ public class AdminActivity extends AppCompatActivity {
         textViewViewOrders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentViewOrders = new Intent(AdminActivity.this, ViewOrderActivity.class);
+                Intent intentViewOrders = new Intent(AdminActivity.this, OrderActivity.class);
                 startActivity(intentViewOrders);
             }
         });
-
     }
 }

@@ -38,7 +38,7 @@ public class ProductActivity extends AppCompatActivity {
     ImageView imagePreview;
 
     private Bitmap selectedBitmap;
-    private int resourceId = 0;
+    private String resourceId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class ProductActivity extends AppCompatActivity {
         buttonAddProduct.setOnClickListener(v -> addProductToCategory());
         buttonPickImage.setOnClickListener(v -> showDrawablePickerDialog());
 
-//        addDefaultProducts();
+        addDefaultProducts();
     }
 
 
@@ -139,16 +139,18 @@ public class ProductActivity extends AppCompatActivity {
         new android.app.AlertDialog.Builder(this)
                 .setTitle("Choose an image")
                 .setItems(items, (dialog, which) -> {
+                    int selectedResId = drawableIds[which];
+
                     BitmapFactory.Options options = new BitmapFactory.Options();
                     options.inJustDecodeBounds = true;
-                    BitmapFactory.decodeResource(getResources(), drawableIds[which], options);
+                    BitmapFactory.decodeResource(getResources(), selectedResId, options);
 
                     options.inSampleSize = calculateInSampleSize(options, 500, 500);
                     options.inJustDecodeBounds = false;
-                    selectedBitmap = BitmapFactory.decodeResource(getResources(), drawableIds[which], options);
+                    selectedBitmap = BitmapFactory.decodeResource(getResources(), selectedResId, options);
 
                     imagePreview.setImageBitmap(selectedBitmap);
-                    resourceId =  drawableIds[which];
+                    resourceId =  getResources().getResourceEntryName(selectedResId);
                 })
                 .show();
     }
@@ -173,21 +175,21 @@ public class ProductActivity extends AppCompatActivity {
         String defaultCategory = "DefaultCategory";
 
         List<ProductClass> defaultProducts = new ArrayList<>();
-        defaultProducts.add(new ProductClass("A beautiful rose", "Hyacinth", "Spring", 15000, 20, R.drawable.ic_flower_spring_hyancinth));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Sakura", "Spring", 20000, 15, R.drawable.ic_flower_spring_sakura));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Tulip", "Spring", 12000, 30, R.drawable.ic_flower_spring_tuilip));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Hyacinth", "Spring", 15000, 20, "ic_flower_spring_hyancinth"));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Sakura", "Spring", 20000, 15, "ic_flower_spring_sakura"));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Tulip", "Spring", 12000, 30, "ic_flower_spring_tuilip"));
 
-        defaultProducts.add(new ProductClass("A beautiful rose", "Hibiscus", "Summer", 15000, 20, R.drawable.ic_flower_summer_hibiscus));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Lavender", "Summer", 20000, 15, R.drawable.ic_flower_summer_lavender));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Sunflower", "Summer", 12000, 30, R.drawable.ic_flower_summer_sunflower));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Hibiscus", "Summer", 15000, 20, "ic_flower_summer_hibiscus"));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Lavender", "Summer", 20000, 15, "ic_flower_summer_lavender"));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Sunflower", "Summer", 12000, 30, "ic_flower_summer_sunflower"));
 
-        defaultProducts.add(new ProductClass("A beautiful rose", "Autumn joy", "Autumn", 15000, 20, R.drawable.ic_flower_autumn_autumnjoy));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Chrysanthemums", "Autumn", 20000, 15, R.drawable.ic_flower_autumn_chrysanthemums));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Cosmos flower", "Autumn", 12000, 30, R.drawable.ic_flower_autumn_cosmos));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Autumn joy", "Autumn", 15000, 20, "ic_flower_autumn_autumnjoy"));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Chrysanthemums", "Autumn", 20000, 15, "ic_flower_autumn_chrysanthemums"));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Cosmos flower", "Autumn", 12000, 30, "ic_flower_autumn_cosmos"));
 
-        defaultProducts.add(new ProductClass("A beautiful rose", "Christmas rose", "Winter", 15000, 20, R.drawable.ic_flower_summer_hibiscus));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Poinsettias", "Winter", 20000, 15, R.drawable.ic_flower_summer_lavender));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Snowflake", "Winter", 12000, 30, R.drawable.ic_flower_summer_sunflower));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Christmas rose", "Winter", 15000, 20, "ic_flower_summer_hibiscus"));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Poinsettias", "Winter", 20000, 15, "ic_flower_summer_lavender"));
+        defaultProducts.add(new ProductClass("A beautiful rose", "Snowflake", "Winter", 12000, 30, "ic_flower_summer_sunflower"));
 
 
         for (ProductClass product : defaultProducts) {

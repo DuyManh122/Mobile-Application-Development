@@ -2,63 +2,30 @@ package com.example.myapplication;
 
 public class OrderClass {
 
-    private String productId;
-    private String categoryName;
+    private String userEmail;
     private String productName;
+    private double price;
     private int quantity;
-    private int date;
-
 
     public OrderClass() {}
 
-    //Constructor
-
-    public OrderClass(String productId, String categoryName, String productName, int quantity, int date) {
-        this.productId = productId;
-        this.categoryName = categoryName;
+    public OrderClass(String userEmail, String productName, double price, int quantity) {
+        this.userEmail = userEmail;
         this.productName = productName;
-        this.quantity = quantity;
-        this.date = date;
-    }
-
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
+        this.price = price;
         this.quantity = quantity;
     }
 
-    public int getDate() {
-        return date;
-    }
+    public String getUserEmail() { return userEmail; }
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
-    public void setDate(int price) {
-        this.date = price;
-    }
+    public String getProductName() { return productName; }
+    public void setProductName(String productName) { this.productName = productName; }
+
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
+
+    public int getQuantity() { return quantity; }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
+
 }
