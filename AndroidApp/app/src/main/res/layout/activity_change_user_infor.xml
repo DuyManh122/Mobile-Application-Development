@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_change_user_infor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    tools:context=".ChangeUserInforActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_pink_rose"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/backAccountFragmentButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/baseline_arrow_back_24"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="Back to Account Fragment" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:fontFamily="sans-serif-black"
+                android:text="User Information"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp" />
+
+            <!-- Spacer -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Form Content Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Name"
+            android:textColor="@color/pink"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/pink"
+            android:inputType="textPersonName"
+            android:hint = "Enter Name" />
+
+        <!-- Gender Label and Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Gender"
+            android:textColor="@color/pink"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/GenderPickerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Girl"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            style="?android:spinnerStyle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginTop="10dp"/>
+
+        <!-- Date of Birth Label and Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth"
+            android:textColor="@color/pink"
+            android:layout_marginBottom="8dp"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/datePickerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JAN 01 2020"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            style="?android:spinnerStyle"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginTop="10dp"/>
+
+        <!-- Address Label and Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Address"
+            android:textColor="@color/pink"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/addressEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/pink"
+            android:inputType="textPostalAddress"
+            android:hint="Enter Address" />
+
+        <!-- Phone Number Label and Input -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Phone Number"
+            android:textColor="@color/pink"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="@color/pink"
+            android:hint="Enter Phone Number"
+            android:inputType="phone" />
+    </LinearLayout>
+</LinearLayout>

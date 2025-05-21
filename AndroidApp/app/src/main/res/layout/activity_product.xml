@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context=".ProductActivity">
+
+    <EditText
+        android:id="@+id/txt_P_ProductId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="200dp"
+        android:hint="Enter Product Id"
+        android:inputType="textPersonName"
+        android:textStyle="italic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_P_ProductName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Enter Product Name"
+        android:inputType="textPersonName"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/txt_P_ProductId"
+        app:layout_constraintStart_toStartOf="@id/txt_P_ProductId"
+        app:layout_constraintEnd_toEndOf="@id/txt_P_ProductId" />
+
+    <EditText
+        android:id="@+id/txt_P_Price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Enter Price"
+        android:inputType="numberDecimal"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/txt_P_ProductName"
+        app:layout_constraintStart_toStartOf="@id/txt_P_ProductName"
+        app:layout_constraintEnd_toEndOf="@id/txt_P_ProductName" />
+
+    <EditText
+        android:id="@+id/txt_P_Quantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Enter Quantity"
+        android:inputType="numberDecimal"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/txt_P_Price"
+        app:layout_constraintStart_toStartOf="@id/txt_P_Price"
+        app:layout_constraintEnd_toEndOf="@id/txt_P_Price" />
+
+    <EditText
+        android:id="@+id/txt_P_Description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Enter Description"
+        android:inputType="text"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/txt_P_Quantity"
+        app:layout_constraintStart_toStartOf="@id/txt_P_Quantity"
+        app:layout_constraintEnd_toEndOf="@id/txt_P_Quantity" />
+
+    <Spinner
+        android:id="@+id/sp_P_Category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/txt_P_Description"
+        app:layout_constraintStart_toStartOf="@id/txt_P_Description"
+        app:layout_constraintEnd_toEndOf="@id/txt_P_Description" />
+
+    <Button
+        android:id="@+id/btn_P_AddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/pink"
+        android:text="Add product"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/sp_P_Category"
+        app:layout_constraintStart_toStartOf="@id/sp_P_Category"
+        app:layout_constraintEnd_toEndOf="@id/sp_P_Category" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
