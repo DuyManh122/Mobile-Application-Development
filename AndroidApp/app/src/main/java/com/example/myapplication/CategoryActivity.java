@@ -78,7 +78,7 @@ public class CategoryActivity extends AppCompatActivity {
             updateFirebaseData(name, resourceId);
         });
 
-//         AddSomeDefaultCategories();
+//        AddSomeDefaultCategories();
     }
 
 
@@ -123,13 +123,12 @@ public class CategoryActivity extends AppCompatActivity {
         return inSampleSize;
     }
 
-//    private void AddSomeDefaultCategories() {
-//        updateFirebaseData("Spring", R.drawable.ic_flower_vase_spring);
-//        updateFirebaseData("Summer", R.drawable.ic_flower_vase_summer);
-//        updateFirebaseData("Autumn", R.drawable.ic_flower_vase_autumn);
-//        updateFirebaseData("Winter", R.drawable.ic_flower_vase_winter);
-//    }
-
+    private void AddSomeDefaultCategories() {
+        updateFirebaseData("Spring", R.drawable.ic_flower_vase_spring);
+        updateFirebaseData("Summer", R.drawable.ic_flower_vase_summer);
+        updateFirebaseData("Autumn", R.drawable.ic_flower_vase_autumn);
+        updateFirebaseData("Winter", R.drawable.ic_flower_vase_winter);
+    }
     private void updateFirebaseData(String document, int id) {
             Map<String, Object> map = new HashMap<>();
             map.put("id", id);
