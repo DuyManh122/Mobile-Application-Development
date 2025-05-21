@@ -38,10 +38,9 @@ public class CategoryActivity extends AppCompatActivity {
     ImageView imagePreview;
 
     private Bitmap selectedBitmap;
-
+    private int resourceId = 0;
     private FirebaseFirestore firestore;
-    private FirebaseStorage storage;
-    private StorageReference storageRef;
+
     private FirebaseAuth auth;
 
     @Override
@@ -54,23 +53,18 @@ public class CategoryActivity extends AppCompatActivity {
         btnPickImage = findViewById(R.id.btn_c_pick_image);
         imagePreview = findViewById(R.id.img_c_preview);
 
-        // Initialize Firebase
         firestore = FirebaseFirestore.getInstance();
-        storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference().child("category_icons");
         auth = FirebaseAuth.getInstance();
 
-        // Ensure user is logged in
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) {
             Toast.makeText(this, "You must be logged in", Toast.LENGTH_SHORT).show();
-            finish(); // Close activity if not authenticated
+            finish();
             return;
         }
 
         btnPickImage.setOnClickListener(view -> {
-            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(intent, IMAGE_PICK_CODE);
+            showDrawablePickerDialog();
         });
 
         btnSubmit.setOnClickListener(view -> {
@@ -81,65 +75,71 @@ public class CategoryActivity extends AppCompatActivity {
                 return;
             }
 
-            uploadImageAndSaveCategory(name, selectedBitmap);
+            updateFirebaseData(name, resourceId);
         });
 
-        // OPTIONAL: Auto insert default categories
-         AddSomeDefaultCategories();
+//         AddSomeDefaultCategories();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMAGE_PICK_CODE && resultCode == Activity.RESULT_OK && data != null) {
-            Uri imageUri = data.getData();
-            try {
-                selectedBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-                imagePreview.setImageBitmap(selectedBitmap); // Show preview
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(this, "Failed to load image", Toast.LENGTH_SHORT).show();
-            }
+
+    private void showDrawablePickerDialog() {
+        final String[] items = {"1", "2", "3", "4"};
+        final int[] drawableIds = {
+                R.drawable.ic_flower_vase_1,
+                R.drawable.ic_flower_vase_2,
+                R.drawable.ic_flower_vase_3,
+                R.drawable.ic_flower_vase_4
+        };
+
+        new android.app.AlertDialog.Builder(this)
+                .setTitle("Choose an image")
+                .setItems(items, (dialog, which) -> {
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = true;
+                    BitmapFactory.decodeResource(getResources(), drawableIds[which], options);
+
+                    options.inSampleSize = calculateInSampleSize(options, 500, 500);
+                    options.inJustDecodeBounds = false;
+                    selectedBitmap = BitmapFactory.decodeResource(getResources(), drawableIds[which], options);
+
+                    imagePreview.setImageBitmap(selectedBitmap);
+                    resourceId =  drawableIds[which];
+                })
+                .show();
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+            final int heightRatio = Math.round((float) height / (float) reqHeight);
+            final int widthRatio = Math.round((float) width / (float) reqWidth);
+            inSampleSize = Math.min(heightRatio, widthRatio);
         }
+
+        return inSampleSize;
     }
 
-    private void uploadImageAndSaveCategory(String name, Bitmap bitmap) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] imageData = baos.toByteArray();
+//    private void AddSomeDefaultCategories() {
+//        updateFirebaseData("Spring", R.drawable.ic_flower_vase_spring);
+//        updateFirebaseData("Summer", R.drawable.ic_flower_vase_summer);
+//        updateFirebaseData("Autumn", R.drawable.ic_flower_vase_autumn);
+//        updateFirebaseData("Winter", R.drawable.ic_flower_vase_winter);
+//    }
 
-        String fileName = UUID.randomUUID().toString() + ".png";
-        StorageReference imageRef = storageRef.child(fileName);
+    private void updateFirebaseData(String document, int id) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("id", id);
 
-        UploadTask uploadTask = imageRef.putBytes(imageData);
-        uploadTask
-                .addOnSuccessListener(taskSnapshot -> imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                    String imageUrl = uri.toString();
-
-                    Map<String, Object> categoryData = new HashMap<>();
-                    categoryData.put("name", name);
-                    categoryData.put("iconUrl", imageUrl);
-
-                    firestore.collection("Categories").add(categoryData)
-                            .addOnSuccessListener(documentReference -> {
-                                Toast.makeText(this, "Category added successfully", Toast.LENGTH_SHORT).show();
-                                finish();
-                            })
-                            .addOnFailureListener(e -> Toast.makeText(this, "Failed to save category", Toast.LENGTH_SHORT).show());
-                }))
-                .addOnFailureListener(e -> Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show());
+            firestore.collection("Categories").document(document).set(map)
+                    .addOnSuccessListener(v -> showToast("Information updated successfully"))
+                    .addOnFailureListener(e -> showToast("Error updating information: " + e.getMessage()));
     }
 
-    // Optional helper to add default categories
-    private void AddSomeDefaultCategories() {
-        addCategoryWithBitmap("Spring", R.drawable.ic_flower_vase_spring);
-        addCategoryWithBitmap("Summer", R.drawable.ic_flower_vase_summer);
-        addCategoryWithBitmap("Autumn", R.drawable.ic_flower_vase_autumn);
-        addCategoryWithBitmap("Winter", R.drawable.ic_flower_vase_winter);
-    }
-
-    private void addCategoryWithBitmap(String name, int drawableResId) {
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), drawableResId);
-        uploadImageAndSaveCategory(name, bitmap);
+    void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

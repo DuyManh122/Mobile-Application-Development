@@ -32,7 +32,6 @@ public class ProductActivity extends AppCompatActivity {
 //        dbHelper = new DBHelper(this);
 //        dbHelper.openDB();
 
-        editTextProductId = (EditText) findViewById(R.id.txt_P_ProductId);
         editTextProductName = (EditText) findViewById(R.id.txt_P_ProductName);
         editTextPrice = (EditText) findViewById(R.id.txt_P_Price);
         editTextQuantity = (EditText) findViewById(R.id.txt_P_Quantity);

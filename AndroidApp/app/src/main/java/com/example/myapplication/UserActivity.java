@@ -55,28 +55,14 @@ public class UserActivity extends AppCompatActivity {
         userName = findViewById(R.id.user_name);
         userAvatar = findViewById(R.id.user_avatar);
         categoryRecyclerView = findViewById(R.id.categoryRecyclerView);
-
-
         categoryRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        Bitmap springFlower = BitmapFactory.decodeResource(getResources(), R.drawable.ic_flower_vase_spring);
-        Bitmap summerFlower = BitmapFactory.decodeResource(getResources(), R.drawable.ic_flower_vase_summer);
-        Bitmap autumnFlower = BitmapFactory.decodeResource(getResources(), R.drawable.ic_flower_vase_autumn);
-        Bitmap winterFlower = BitmapFactory.decodeResource(getResources(), R.drawable.ic_flower_vase_winter);
 
         userName.setOnClickListener(v -> changeToUserInformationActivity());
         userAvatar.setOnClickListener(v -> changeToUserInformationActivity());
 
-        List<Category> categoryList = new ArrayList<>();
-        categoryList.add(new Category("Spring", springFlower));
-        categoryList.add(new Category("Summer", summerFlower));
-        categoryList.add(new Category("Autumn", autumnFlower));
-        categoryList.add(new Category("Winter", winterFlower));
-
-        CategoryAdapter adapter = new CategoryAdapter(categoryList);
-        categoryRecyclerView.setAdapter(adapter);
-
-        loadDataFromFirestore();
+        loadDataFromFirestore(); //User Information
+        loadCategoriesFromFirestore(); //Category
     }
 
     void changeToUserInformationActivity() {
@@ -115,6 +101,33 @@ public class UserActivity extends AppCompatActivity {
         return  userInfor;
     }
 
+
+    private void loadCategoriesFromFirestore() {
+        db.collection("Categories")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    List<Category> categoryList = new ArrayList<>();
+
+                    for (DocumentSnapshot doc : queryDocumentSnapshots) {
+                        String name = doc.getId();
+                        Long drawableIdLong = doc.getLong("id");
+
+                        if (drawableIdLong != null) {
+                            int drawableId = drawableIdLong.intValue();
+                            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), drawableId);
+                            categoryList.add(new Category(name, bitmap));
+                        } else {
+                            Toast.makeText(this, "Drawable ID missing for " + name, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    CategoryAdapter adapter = new CategoryAdapter(categoryList);
+                    categoryRecyclerView.setAdapter(adapter);
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Failed to load categories: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                );
+    }
     private void updateUIWithData() {
         userName.setText(userInfor.getName());
     }

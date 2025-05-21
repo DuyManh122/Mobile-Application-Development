@@ -54,24 +54,24 @@ public class ViewProductActivity extends AppCompatActivity {
                             int price = doc.getLong("price") != null ? doc.getLong("price").intValue() : 0;
                             long quantity = doc.getLong("quantity") != null ? doc.getLong("quantity") : 0;
 
-                            ProductClass product = new ProductClass(productId, productName, categoryId, price, (int) quantity);
-                            productList.add(product);
+//                            ProductClass product = new ProductClass(productId, productName, categoryId, price, (int) quantity);
+//                            productList.add(product);
                             displayList.add(productName);
                         }
 
                         listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, displayList);
                         listViewProducts.setAdapter(listAdapter);
 
-                        listViewProducts.setOnItemClickListener((adapterView, view, position, id) -> {
-                            ProductClass selectedProduct = productList.get(position);
-                            Intent intent = new Intent(ViewProductActivity.this, ViewProductInfoActivity.class);
-                            intent.putExtra("ProductID", selectedProduct.getProductId());
-                            intent.putExtra("ProductName", selectedProduct.getProductName());
-                            intent.putExtra("CategoryID", selectedProduct.getCategoryId());
-                            intent.putExtra("Price", String.valueOf(selectedProduct.getPrice()));
-                            intent.putExtra("Quantity", String.valueOf(selectedProduct.getQuantity()));
-                            startActivity(intent);
-                        });
+//                        listViewProducts.setOnItemClickListener((adapterView, view, position, id) -> {
+//                            ProductClass selectedProduct = productList.get(position);
+//                            Intent intent = new Intent(ViewProductActivity.this, ViewProductInfoActivity.class);
+//                            intent.putExtra("ProductID", selectedProduct.getProductId());
+//                            intent.putExtra("ProductName", selectedProduct.getProductName());
+//                            intent.putExtra("CategoryID", selectedProduct.getCategoryId());
+//                            intent.putExtra("Price", String.valueOf(selectedProduct.getPrice()));
+//                            intent.putExtra("Quantity", String.valueOf(selectedProduct.getQuantity()));
+//                            startActivity(intent);
+//                        });
 
                     } else {
                         Toast.makeText(this, "No products found.", Toast.LENGTH_SHORT).show();

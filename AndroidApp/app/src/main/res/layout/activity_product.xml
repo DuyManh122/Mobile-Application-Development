@@ -8,77 +8,59 @@
     android:background="@drawable/bg2"
     tools:context=".ProductActivity">
 
-    <EditText
-        android:id="@+id/txt_P_ProductId"
+    <LinearLayout
+        android:id="@+id/linear_inputs"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="200dp"
-        android:hint="Enter Product Id"
-        android:inputType="textPersonName"
-        android:textStyle="italic"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="200dp">
 
-    <EditText
-        android:id="@+id/txt_P_ProductName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Enter Product Name"
-        android:inputType="textPersonName"
-        android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/txt_P_ProductId"
-        app:layout_constraintStart_toStartOf="@id/txt_P_ProductId"
-        app:layout_constraintEnd_toEndOf="@id/txt_P_ProductId" />
+        <EditText
+            android:id="@+id/txt_P_ProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Product Name"
+            android:inputType="textPersonName"
+            android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/txt_P_Price"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Enter Price"
-        android:inputType="numberDecimal"
-        android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/txt_P_ProductName"
-        app:layout_constraintStart_toStartOf="@id/txt_P_ProductName"
-        app:layout_constraintEnd_toEndOf="@id/txt_P_ProductName" />
+        <EditText
+            android:id="@+id/txt_P_Price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Enter Price"
+            android:inputType="numberDecimal"
+            android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/txt_P_Quantity"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Enter Quantity"
-        android:inputType="numberDecimal"
-        android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/txt_P_Price"
-        app:layout_constraintStart_toStartOf="@id/txt_P_Price"
-        app:layout_constraintEnd_toEndOf="@id/txt_P_Price" />
+        <EditText
+            android:id="@+id/txt_P_Quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Enter Quantity"
+            android:inputType="numberDecimal"
+            android:textStyle="italic" />
 
-    <EditText
-        android:id="@+id/txt_P_Description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:hint="Enter Description"
-        android:inputType="text"
-        android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/txt_P_Quantity"
-        app:layout_constraintStart_toStartOf="@id/txt_P_Quantity"
-        app:layout_constraintEnd_toEndOf="@id/txt_P_Quantity" />
+        <EditText
+            android:id="@+id/txt_P_Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Enter Description"
+            android:inputType="text"
+            android:textStyle="italic" />
 
-    <Spinner
-        android:id="@+id/sp_P_Category"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/txt_P_Description"
-        app:layout_constraintStart_toStartOf="@id/txt_P_Description"
-        app:layout_constraintEnd_toEndOf="@id/txt_P_Description" />
+        <Spinner
+            android:id="@+id/sp_P_Category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textStyle="italic" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_P_AddProduct"
@@ -89,8 +71,20 @@
         android:backgroundTint="@color/blue"
         android:text="Add product"
         android:textStyle="italic"
-        app:layout_constraintTop_toBottomOf="@id/sp_P_Category"
-        app:layout_constraintStart_toStartOf="@id/sp_P_Category"
-        app:layout_constraintEnd_toEndOf="@id/sp_P_Category" />
+        app:layout_constraintTop_toBottomOf="@id/linear_inputs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <Button
+        android:id="@+id/btn_P_AddImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/blue"
+        android:text="Add image"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/btn_P_AddProduct"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

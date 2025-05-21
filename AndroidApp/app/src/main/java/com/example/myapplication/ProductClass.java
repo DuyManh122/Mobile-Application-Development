@@ -2,34 +2,43 @@ package com.example.myapplication;
 
 public class ProductClass {
 
-    private String productId;
+    private String productDescription;
     private String productName;
-    private String categoryId;
-    private int price;
-    private int quantity;
+    private String categoryName;
+    private int productPrice;
+    private int productQuantity;
+
+    private int productResourceId;
+
 
     public ProductClass() {}
 
-    //Constructor
-
-
-    public ProductClass(String productId, String productName, String categoryId, int price, int quantity) {
-        this.productId = productId;
+    public ProductClass(String productDescription, String productName, String categoryName, int productPrice, int productQuantity, int productResourceId) {
+        this.productDescription = productDescription;
         this.productName = productName;
-        this.categoryId = categoryId;
-        this.price = price;
-        this.quantity = quantity;
+        this.categoryName = categoryName;
+        this.productPrice = productPrice;
+        this.productQuantity = productQuantity;
+        this.productResourceId = productResourceId;
     }
 
 
     //Getters and Setters
 
-    public String getProductId() {
-        return productId;
+    public int getProductResourceId() {
+        return productResourceId;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProductResourceId(int productResourceId) {
+        this.productResourceId = productResourceId;
+    }
+
+    public String getproductDescription() {
+        return productDescription;
+    }
+
+    public void setproductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
     public String getProductName() {
@@ -40,27 +49,27 @@ public class ProductClass {
         this.productName = productName;
     }
 
-    public String getCategoryId() {
-        return categoryId;
+    public String getcategoryName() {
+        return categoryName;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public void setcategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public int getPrice() {
-        return price;
+    public int getproductPrice() {
+        return productPrice;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setproductPrice(int productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getproductQuantity() {
+        return productQuantity;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setproductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
     }
 }
