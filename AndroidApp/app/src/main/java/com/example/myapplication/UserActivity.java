@@ -186,6 +186,9 @@ public class UserActivity extends AppCompatActivity {
         flowerMap.clear();
 
         db.collection("Categories").get().addOnSuccessListener(categorySnapshots -> {
+            int totalCategories = categorySnapshots.size();
+            final int[] categoriesLoaded = {0};
+
             for (QueryDocumentSnapshot categoryDoc : categorySnapshots) {
                 String category = categoryDoc.getId();
 
@@ -205,7 +208,17 @@ public class UserActivity extends AppCompatActivity {
                             flowerMap.put(category, categoryFlowers);
                             allFlowers.addAll(categoryFlowers);
 
-                            flowerAdapter.updateData(allFlowers);
+                            categoriesLoaded[0]++;
+                            if (categoriesLoaded[0] == totalCategories) {
+                                flowerAdapter.updateData(allFlowers);
+                            }
+                        })
+                        .addOnFailureListener(e -> {
+                            categoriesLoaded[0]++;
+                            if (categoriesLoaded[0] == totalCategories) {
+                                flowerAdapter.updateData(allFlowers);
+                            }
+                            Toast.makeText(this, "Failed to load products from: " + category, Toast.LENGTH_SHORT).show();
                         });
             }
         });
@@ -221,8 +234,12 @@ public class UserActivity extends AppCompatActivity {
 
         builder.setPositiveButton("Add to Cart", (dialog, which) -> {
             int quantity = Integer.parseInt(input.getText().toString());
-            CartManager.getInstance().addToCart(new CartClass(product, quantity));
-            Toast.makeText(this, "Added to cart", Toast.LENGTH_SHORT).show();
+            if (quantity > 0 && quantity < product.getproductQuantity()) {
+                CartManager.getInstance().addToCart(new CartClass(product, quantity));
+                Toast.makeText(this, "Added to cart", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Please enter valid quantity",Toast.LENGTH_SHORT).show();
+            }
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());

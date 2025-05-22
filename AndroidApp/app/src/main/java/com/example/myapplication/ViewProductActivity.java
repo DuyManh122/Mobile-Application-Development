@@ -77,8 +77,12 @@ public class ViewProductActivity extends AppCompatActivity {
 
         builder.setPositiveButton("Add to Cart", (dialog, which) -> {
             int quantity = Integer.parseInt(input.getText().toString());
-            CartManager.getInstance().addToCart(new CartClass(product, quantity));
-            Toast.makeText(this, "Added to cart", Toast.LENGTH_SHORT).show();
+            if (quantity > 0 && quantity < product.getproductQuantity()) {
+                CartManager.getInstance().addToCart(new CartClass(product, quantity));
+                Toast.makeText(this, "Added to cart", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Please enter valid quantity",Toast.LENGTH_SHORT).show();
+            }
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
