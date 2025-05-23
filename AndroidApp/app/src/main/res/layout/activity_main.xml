@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/playfairdisplay_italic"
-        android:text="Click here to log in"
+        android:text="Hello guys"
         android:textColor="#7F8C8D"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -20,5 +20,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.952" />
 </androidx.constraintlayout.widget.ConstraintLayout>

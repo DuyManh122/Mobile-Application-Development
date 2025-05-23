@@ -18,9 +18,9 @@
             android:layout_marginStart="20dp"
             android:layout_gravity="center_vertical"
             android:fontFamily="sans-serif-black"
-            android:text="All orders"
+            android:text="All orders of customers"
             android:textColor="@color/pink"
-            android:textSize="22sp" />
+            android:textSize="32sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

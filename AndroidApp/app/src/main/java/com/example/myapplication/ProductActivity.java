@@ -175,21 +175,22 @@ public class ProductActivity extends AppCompatActivity {
         String defaultCategory = "DefaultCategory";
 
         List<ProductClass> defaultProducts = new ArrayList<>();
-        defaultProducts.add(new ProductClass("A beautiful rose", "Hyacinth", "Spring", 15000, 20, "ic_flower_spring_hyancinth"));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Sakura", "Spring", 20000, 15, "ic_flower_spring_sakura"));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Tulip", "Spring", 12000, 30, "ic_flower_spring_tuilip"));
+        defaultProducts.add(new ProductClass("Elegant and charming", "Hyacinth", "Spring", 15000, 20, "ic_flower_spring_hyancinth"));
+        defaultProducts.add(new ProductClass("Delicate and graceful", "Sakura", "Spring", 20000, 15, "ic_flower_spring_sakura"));
+        defaultProducts.add(new ProductClass("Bright and cheerful", "Tulip", "Spring", 12000, 30, "ic_flower_spring_tuilip"));
 
-        defaultProducts.add(new ProductClass("A beautiful rose", "Hibiscus", "Summer", 15000, 20, "ic_flower_summer_hibiscus"));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Lavender", "Summer", 20000, 15, "ic_flower_summer_lavender"));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Sunflower", "Summer", 12000, 30, "ic_flower_summer_sunflower"));
+        defaultProducts.add(new ProductClass("Bold and exotic", "Hibiscus", "Summer", 15000, 20, "ic_flower_summer_hibiscus"));
+        defaultProducts.add(new ProductClass("Calming and fragrant", "Lavender", "Summer", 20000, 15, "ic_flower_summer_lavender"));
+        defaultProducts.add(new ProductClass("Radiant and happy", "Sunflower", "Summer", 12000, 30, "ic_flower_summer_sunflower"));
 
-        defaultProducts.add(new ProductClass("A beautiful rose", "Autumn joy", "Autumn", 15000, 20, "ic_flower_autumn_autumnjoy"));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Chrysanthemums", "Autumn", 20000, 15, "ic_flower_autumn_chrysanthemums"));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Cosmos flower", "Autumn", 12000, 30, "ic_flower_autumn_cosmos"));
+        defaultProducts.add(new ProductClass("Warm and rich", "Autumn joy", "Autumn", 15000, 20, "ic_flower_autumn_autumnjoy"));
+        defaultProducts.add(new ProductClass("Classic and full", "Chrysanthemums", "Autumn", 20000, 15, "ic_flower_autumn_chrysanthemums"));
+        defaultProducts.add(new ProductClass("Soft and airy", "Cosmos flower", "Autumn", 12000, 30, "ic_flower_autumn_cosmos"));
 
-        defaultProducts.add(new ProductClass("A beautiful rose", "Christmas rose", "Winter", 15000, 20, "ic_flower_summer_hibiscus"));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Poinsettias", "Winter", 20000, 15, "ic_flower_summer_lavender"));
-        defaultProducts.add(new ProductClass("A beautiful rose", "Snowflake", "Winter", 12000, 30, "ic_flower_summer_sunflower"));
+        defaultProducts.add(new ProductClass("Elegant winter bloom", "Christmas rose", "Winter", 15000, 20, "ic_flower_winter_christmasrose"));
+        defaultProducts.add(new ProductClass("Festive and vibrant", "Poinsettias", "Winter", 20000, 15, "ic_flower_winter_poinsettias"));
+        defaultProducts.add(new ProductClass("Delicate and frosty", "Snowflake", "Winter", 12000, 30, "ic_flower_winter_snowflake"));
+
 
 
         for (ProductClass product : defaultProducts) {

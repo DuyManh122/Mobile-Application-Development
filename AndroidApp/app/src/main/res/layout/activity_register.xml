@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,6 +20,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/txt_R_UserId"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,34 +29,37 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="12dp"
         android:hint="Enter Email"
         android:inputType="textPersonName"
+        android:padding="12dp"
         android:textColor="#34495E"
         android:textColorHint="#7f8c8d"
         android:textStyle="italic"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@id/txt_R_SignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txt_R_SignUp" />
+
 
     <EditText
         android:id="@+id/txt_R_Password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="16dp"
         android:hint="Enter Password"
         android:inputType="textPassword"
+        android:padding="12dp"
         android:textColor="#34495E"
         android:textColorHint="#7f8c8d"
         android:textStyle="italic"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@id/txt_R_UserId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/txt_R_SignUp" />
 
     <EditText
         android:id="@+id/txt_R_ConfirmPassword"
@@ -63,56 +67,119 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="28dp"
-        android:hint="Enter Confirm Password"
+        android:hint="Enter Password"
         android:inputType="textPassword"
+        android:padding="12dp"
         android:textColor="#34495E"
         android:textColorHint="#7f8c8d"
         android:textStyle="italic"
-        android:padding="12dp"
-        app:layout_constraintTop_toBottomOf="@id/txt_R_Password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Spinner
-        android:id="@+id/sp_R_UserType"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="40dp"
-        android:textColor="#34495E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_R_ConfirmPassword" />
+        app:layout_constraintTop_toBottomOf="@id/txt_R_Password" />
 
     <Button
         android:id="@+id/btn_R_Register"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="@color/pink"
         android:text="Register"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sp_R_UserType" />
+        app:layout_constraintTop_toBottomOf="@id/txt_R_Password" />
 
     <TextView
         android:id="@+id/txt_R_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="52dp"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="Already have an account?"
+        android:text="Do you have an account?"
         android:textColor="#2C3E50"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_R_Register" />
+        app:layout_constraintTop_toBottomOf="@id/layout_social" />
+
+    <LinearLayout
+        android:id="@+id/layout_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/btn_R_Register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#ccc" />
+
+        <TextView
+            android:id="@+id/txt_or_signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:text="Or sign up with"
+            android:textColor="#95A5A6"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#ccc" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_social"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.401"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_text">
+
+        <ImageView
+            android:id="@+id/btn_google"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_white_bg"
+            android:padding="8dp"
+            android:src="@drawable/facebook_icon_264986" />
+
+        <ImageView
+            android:id="@+id/btn_facebook"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_white_bg"
+            android:padding="8dp"
+            android:src="@drawable/instagram_icon_264992" />
+
+        <ImageView
+            android:id="@+id/btn_apple"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_white_bg"
+            android:padding="8dp"
+            android:src="@drawable/linkedin_icon_264993" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txt_R_GoToLogin"
@@ -126,4 +193,30 @@
         app:layout_constraintBaseline_toBaselineOf="@id/txt_R_question"
         app:layout_constraintStart_toEndOf="@id/txt_R_question" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
